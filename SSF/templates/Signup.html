@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(-45deg, #ffe206, #0547ec, rgb(218, 9, 9), rgb(62, 207, 62));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.181); /* Adjust the last value for transparency */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        form:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+            transform-origin: 0 0;
+            transition: transform 0.3s ease-out;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus {
+            border-color: #4caf50; /* Highlight color on focus, adjust as needed */
+        }
+
+        input:focus + label, input:not(:placeholder-shown) + label, select:focus + label {
+            transform: translateY(-120%) scale(0.8);
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .btn-3 {
+  background: rgb(0,172,238);
+background: linear-gradient(0deg, rgb(44, 24, 96) 0%, rgb(134, 8, 134) 100%);
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+   background: rgb(2, 2, 2);
+  transition: all 0.3s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+   background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgb(0, 0, 0);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+   background: rgb(5, 5, 5);
+  transition: all 0.3s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+.white-label {
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <form action="/dashboard" method="post">
+        <h1 class="white-label">SIGN UP</h1>
+        <label for="username" class="white-label">Username:</label>
+        <input type="text" id="username" name="username" pattern="^[a-zA-Z-'\s]{1,40}$" required>
+        <br>
+        <label for="password" class="white-label" class="white-label">Password:</label>
+        <input type="password" id="password" name="password" pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$" required>
+        <br>
+        <label for="role" class="white-label">Role:</label>
+        <select id="role" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br>
+        <button type="submit" class="custom-btn btn-3" onclick="setSuccessMessage()"><span>sign up</span></button>
+    </form>
+
+    <script>
+        function setSuccessMessage() {
+          var user = document.getElementById('username').value;
+          var password = document.getElementById('password').value;
+          var select = document.getElementById('role');
+          if(user != ""){
+            if(password != ""){
+              if(select.value){
+                alert("Registered successfully");
+              }
+            }
+          }
+          
+        }
+    </script>
+</body>
+</html>
